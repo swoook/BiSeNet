@@ -312,9 +312,10 @@ class SegmentHead(nn.Module):
 
 class BiSeNetV2(nn.Module):
 
-    def __init__(self, n_classes, output_aux=True):
+    def __init__(self, n_classes, output_aux=True, is_train=True):
         super(BiSeNetV2, self).__init__()
         self.output_aux = output_aux
+        self.is_train = is_train
         self.detail = DetailBranch()
         self.segment = SegmentBranch()
         self.bga = BGALayer()
@@ -330,13 +331,12 @@ class BiSeNetV2(nn.Module):
         self.init_weights()
 
     def forward(self, x):
-        size = x.size()[2:]
         feat_d = self.detail(x)
         feat2, feat3, feat4, feat5_4, feat_s = self.segment(x)
         feat_head = self.bga(feat_d, feat_s)
 
         logits = self.head(feat_head)
-        if self.output_aux:
+        if self.is_train:
             logits_aux2 = self.aux2(feat2)
             logits_aux3 = self.aux3(feat3)
             logits_aux4 = self.aux4(feat4)
