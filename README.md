@@ -1,3 +1,7 @@
+# ❗ This is cloned repository!
+
+This repository is cloned from [CoinCheung/BiSeNet (github)](https://github.com/CoinCheung/BiSeNet) and modified for research
+
 # BiSeNetV1 & BiSeNetV2
 
 My implementation of [BiSeNetV1](https://arxiv.org/abs/1808.00897) and [BiSeNetV2](https://arxiv.org/abs/1808.00897).
@@ -95,5 +99,4 @@ You can go to [tensorrt](./tensorrt) For details.
 
 
 ### Be aware that this is the refactored version of the original codebase. You can go to the `old` directory for original implementation.
-
 
